@@ -1,0 +1,13 @@
+*, *:before, *:after {
+	box-sizing: border-box;
+  }
+  
+  body {
+	margin: 0;
+	font-family: "sans-serif";
+  }
+  .book-img{
+      text-align: center;
+      width: 100%;
+      height: auto;
+  }

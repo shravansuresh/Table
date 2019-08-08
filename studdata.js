@@ -37,3 +37,35 @@ function ShowOnTable(){
     $(data).appendTo("#demo");
 }
 }
+function DeleteRow(){
+    let deleteRno = prompt("Enter the Roll number in the row you want to delete: ", "Roll no. here");
+    const confirmDelete = confirm("Do you want delete ?");
+    if(confirmDelete == true)
+    {
+        let storedData = localStorage.getItem("studarry");
+        let storedJSON = JSON.parse(storedData);
+        let i,flag=0;
+        for(i=0; i<storedJSON.length; i++){
+            if(deleteRno == storedJSON[i][3].value)
+            {
+                flag=1;
+                break;
+            }
+            else{
+                flag=0;
+            }
+        }
+        if(flag == 0)
+        {
+            alert("invalid Input");
+        }
+        storedJSON.splice(i,1);
+        let stringJSON=JSON.stringify(storedJSON);
+        localStorage.setItem("studarry",stringJSON);
+        location.reload();
+    }
+    else
+    {
+        alert("Ok");
+    }
+}

@@ -11,3 +11,10 @@
       width: 100%;
       height: auto;
   }
+  .container{
+    position: relative;
+  }
+  .btn-group{
+    display: flex;
+    justify-content: space-evenly;
+  }

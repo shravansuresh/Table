@@ -21,6 +21,7 @@ function savetolocal(){
     }
 }
 function ShowOnTable(){
+    document.getElementById("add_data").style.display="none";
     let storedData = localStorage.getItem("studarry");
     let storedJSON = JSON.parse(storedData);
     let i, name, dob, email, rno;
@@ -39,6 +40,8 @@ function ShowOnTable(){
 }
 function DeleteRow(){
     let deleteRno = prompt("Enter the Roll number in the row you want to delete: ", "Roll no. here");
+    if(deleteRno != null)
+    {
     const confirmDelete = confirm("Do you want delete ?");
     if(confirmDelete == true)
     {
@@ -64,8 +67,8 @@ function DeleteRow(){
         localStorage.setItem("studarry",stringJSON);
         location.reload();
     }
-    else
-    {
-        alert("Ok");
     }
+}
+function showForm(){
+    document.getElementById("add_data").style.display="block";
 }

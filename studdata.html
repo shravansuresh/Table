@@ -43,6 +43,7 @@
 <div class="container">
   <h2>Student Data</h2>
   <div class="btn-group pull-right" id="EditDeleteBtn">
+    <button type="button" class="btn btn-success btn-lg pull-right" onclick="showForm()">Add a Row</button>
     <button type="button" class="btn btn-danger btn-lg pull-right" onclick="DeleteRow()">Delete a Row</button>
     <button type="button" class="btn btn-warning btn-lg pull-right">Edit a Row</button>
   </div> 
@@ -59,7 +60,7 @@
     </tbody>
   </table>
 </div>
-<div>
+<div id="add_data">
     <form id="localStorageData" method="post" action="">
         <label>Name :</label>
         <input type="text" name="Fname" id="Fname" class="stored" value="" />

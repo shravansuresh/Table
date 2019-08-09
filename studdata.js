@@ -111,3 +111,96 @@ function EditRow(){
     window.scrollTo(0, document.body.scrollHeight);
     
 }
+
+function SearchAny()
+{
+    
+    let input, filter, table, td, tr, i, txtValue;
+    input = document.getElementById("SearchBar");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("StudTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td");
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+}
+
+function Sort(locationId,tableId,rowId){
+    let storedData = localStorage.getItem(locationId);
+    let storedJSON = JSON.parse(storedData);
+    if(rowId == "fname"){
+        let i;
+        for( i=0; i< storedJSON.length; i++){
+            let k;
+        for(k=i+1;k<storedJSON.length;k++){
+            if(storedJSON[i][0].value > storedJSON[k][0].value){
+                let j;
+                for( j=0; j<4; j++){
+                let temp = storedJSON[i][j].value;
+                storedJSON[i][j].value = storedJSON[k][j].value;
+                storedJSON[k][j].value = temp;
+                }
+            }
+        }
+        }
+    }
+    if(rowId == "phno"){
+        let i;
+        for( i=0; i< storedJSON.length; i++){
+            let k;
+        for(k=i+1;k<storedJSON.length;k++){
+            if(storedJSON[i][1].value > storedJSON[k][1].value){
+                let j;
+                for( j=0; j<4; j++){
+                let temp = storedJSON[i][j].value;
+                storedJSON[i][j].value = storedJSON[k][j].value;
+                storedJSON[k][j].value = temp;
+                }
+            }
+        }
+        }
+    }
+    if(rowId == "email"){
+        let i;
+        for( i=0; i< storedJSON.length; i++){
+            let k;
+        for(k=i+1;k<storedJSON.length;k++){
+            if(storedJSON[i][2].value > storedJSON[k][2].value){
+                let j;
+                for( j=0; j<4; j++){
+                let temp = storedJSON[i][j].value;
+                storedJSON[i][j].value = storedJSON[k][j].value;
+                storedJSON[k][j].value = temp;
+                }
+            }
+        }
+        }
+    }
+    if(rowId == "rno"){
+        let i;
+        for( i=0; i< storedJSON.length; i++){
+            let k;
+        for(k=i+1;k< storedJSON.length;k++){
+            if(storedJSON[i][3].value > storedJSON[k][3].value){
+                let j;
+                for( j=0; j<4; j++){
+                let temp = storedJSON[i][j].value;
+                storedJSON[i][j].value = storedJSON[k][j].value;
+                storedJSON[k][j].value = temp;
+                }
+            }
+        }
+        }
+    }   
+    location.reload();
+    let stringJSON=JSON.stringify(storedJSON);
+    localStorage.setItem(locationId,stringJSON);
+}

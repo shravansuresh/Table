@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Main Tab</title>
+<title>Student Tab</title>
 <link rel="stylesheet" type="text/css" href="css/studdata.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -43,18 +43,23 @@
 </div>
 <div class="container">
   <h2>Student Data</h2>
-  <div class="btn-group pull-right" id="EditDeleteBtn">
-    <button type="button" class="btn btn-success btn-lg pull-right" onclick="showForm()">Add a Row</button>
-    <button type="button" class="btn btn-danger btn-lg pull-right" onclick="DeleteRow()">Delete a Row</button>
-    <button type="button" class="btn btn-warning btn-lg pull-right" onclick="EditRow()">Edit a Row</button>
-  </div> 
-  <table class="table">
+  <div class ="operations">
+      <div class="active-purple-3 active-purple-4 mb-4">
+          <input class="form-control" type="text" placeholder="Search" aria-label="Search" onkeyup="SearchAny()"  id="SearchBar">
+      </div>
+    <div class="btn-group pull-right" id="EditDeleteBtn">
+        <button type="button" class="btn btn-success " onclick="showForm()">Add a Row</button>
+        <button type="button" class="btn btn-danger " onclick="DeleteRow()">Delete a Row</button>
+        <button type="button" class="btn btn-warning " onclick="EditRow()">Edit a Row</button>
+    </div> 
+  </div>
+  <table class="table" id="StudTable">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Phone Number</th>
-        <th>Email</th>
-        <th>Roll no.</th>
+        <th onclick='Sort("studarry","StudTable","fname")'>Firstname</th>
+        <th onclick='Sort("studarry","StudTable","phno")'>Phone Number</th>
+        <th onclick='Sort("studarry","StudTable","email")'>Email</th>
+        <th onclick='Sort("studarry","StudTable","rno")'>Roll no.</th>
       </tr>
     </thead>
     <tbody id="demo">

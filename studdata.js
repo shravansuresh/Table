@@ -21,7 +21,7 @@ function savetolocal(){
     }
 }
 function ShowOnTable(){
-    document.getElementById("add_data").style.display="none";
+    document.getElementById("AddForm").style.display="none";
     let storedData = localStorage.getItem("studarry");
     let storedJSON = JSON.parse(storedData);
     let i, name, dob, email, rno;
@@ -70,5 +70,44 @@ function DeleteRow(){
     }
 }
 function showForm(){
-    document.getElementById("add_data").style.display="block";
+    document.getElementById("AddForm").style.display="block";
+    window.scrollTo(0, document.body.scrollHeight);
+}
+function EditRow(){
+    
+    let EditRno = prompt("Enter the Roll number of the row you want to edit: ", "Roll no. here");
+    if(EditRno != null)
+    {
+    const confirmEdit = confirm("Do you want Edit ?");
+    if(confirmEdit == true)
+    {
+        let storedData = localStorage.getItem("studarry");
+        let storedJSON = JSON.parse(storedData);
+        let i,flag=0;
+        for(i=0; i<storedJSON.length; i++){
+            if(EditRno == storedJSON[i][3].value)
+            {
+                flag=1;
+                break;
+            }
+            else{
+                flag=0;
+            }
+        }
+        if(flag == 0)
+        {
+            alert("invalid Input");
+        }
+        document.getElementById("fname").placeholder = storedJSON[i][0].value;
+        document.getElementById("phno").placeholder = storedJSON[i][1].value;
+        document.getElementById("email").placeholder = storedJSON[i][2].value;
+        document.getElementById("rno").placeholder = storedJSON[i][3].value;
+        storedJSON.splice(i,1);
+        let stringJSON=JSON.stringify(storedJSON);
+        localStorage.setItem("studarry",stringJSON);
+    }
+    }
+    document.getElementById("AddForm").style.display="block";
+    window.scrollTo(0, document.body.scrollHeight);
+    
 }

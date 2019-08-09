@@ -37,21 +37,22 @@
         </div>
     </nav>
 </div>
-<div class="book-img">
-        <img src="images/book.jpg" class="img-rounded" alt="Student Image">
+<!--Zoom effect-->
+<div class="view zoom">
+        <img src="images/book.jpg" class="img-fluid " alt="smaple image">
 </div>
 <div class="container">
   <h2>Student Data</h2>
   <div class="btn-group pull-right" id="EditDeleteBtn">
     <button type="button" class="btn btn-success btn-lg pull-right" onclick="showForm()">Add a Row</button>
     <button type="button" class="btn btn-danger btn-lg pull-right" onclick="DeleteRow()">Delete a Row</button>
-    <button type="button" class="btn btn-warning btn-lg pull-right">Edit a Row</button>
+    <button type="button" class="btn btn-warning btn-lg pull-right" onclick="EditRow()">Edit a Row</button>
   </div> 
   <table class="table">
     <thead>
       <tr>
         <th>Firstname</th>
-        <th>Date of Birth</th>
+        <th>Phone Number</th>
         <th>Email</th>
         <th>Roll no.</th>
       </tr>
@@ -60,24 +61,24 @@
     </tbody>
   </table>
 </div>
-<div id="add_data">
+<div id="AddForm">
     <form id="localStorageData" method="post" action="">
         <label>Name :</label>
-        <input type="text" name="Fname" id="Fname" class="stored" value="" />
+        <input type="text" name="Fname" id="fname" class="stored" value="" />
             
-        <label>Date of Birth :</label>
-        <input type="date" name="dob" id="dob" class="stored" value="" />
+        <label>Phone Number :</label>
+        <input type="number" name="Phno" id="phno" class="stored" value="" />
             
         <label>Email :</label>
         <input type="email" name="Email" id="email" class="stored" value="" />
 
         <label>Roll No. :</label>
         <input type="number" name="rno" id="rno" class="stored" value="" />
-            
-        <button onclick="savetolocal()">Submit</button>
+          
+        <input type="Submit" onclick="savetolocal()"/>
     </form>
 </div>
 
-</body>
+
 <script type="text/javascript" src="studdata.js"></script>
 </html>

@@ -6,11 +6,13 @@
 	margin: 0;
 	font-family: "sans-serif";
   }
-  .book-img{
+  .zoom{
       text-align: center;
       width: 100%;
       height: auto;
   }
+
+
   .container{
     position: relative;
   }

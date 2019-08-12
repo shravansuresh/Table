@@ -27,3 +27,7 @@
     height: 40px;
     width:auto;
   }
+  .loadTable{
+    display: flex;
+    justify-content: center;
+  }

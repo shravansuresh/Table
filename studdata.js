@@ -1,38 +1,40 @@
 /*Storing of data to local storage */
-ShowOnTable();
-function savetolocal(){
-    if(localStorage.getItem("studarry") === null){
+//ShowOnTable(Id);
+function savetolocal(locationId){
+    let Id = locationId;
+    if(localStorage.getItem(locationId) === null){
     let data=[];
     let rowdata = ( $( document.getElementById("localStorageData") ).serializeArray());
     data.push(rowdata);
     let stringJSON = JSON.stringify(data);
-    localStorage.setItem("studarry",stringJSON);
-    ShowOnTable();
+    localStorage.setItem(locationId,stringJSON);
+    ShowOnTable(Id);
     }
 /*Adding data to table from local storage*/
     else{
-    let storedData = localStorage.getItem("studarry");
+    let storedData = localStorage.getItem(locationId);
     let storedJSON = JSON.parse(storedData);
     let rowdatan = ( $( document.getElementById("localStorageData") ).serializeArray());
     storedJSON.push(rowdatan);
     let stringJSON1 = JSON.stringify(storedJSON);
-    localStorage.setItem("studarry",stringJSON1);
-    ShowOnTable();
+    localStorage.setItem(locationId,stringJSON1);
+    ShowOnTable(Id);
     }
 }
-function ShowOnTable(){
+function ShowOnTable(locationId){
+    document.getElementById("loadTable").style.display="none";
     document.getElementById("AddForm").style.display="none";
-    let storedData = localStorage.getItem("studarry");
+    let storedData = localStorage.getItem(locationId);
     let storedJSON = JSON.parse(storedData);
-    let i, name, dob, email, rno;
+    let i, name, phno, email, rno;
 
     for(i=0; i<storedJSON.length ; i++)
     {
     name = storedJSON[i][0].value;
-    dob =  storedJSON[i][1].value;
+    phno =  storedJSON[i][1].value;
     email =  storedJSON[i][2].value;
     rno =  storedJSON[i][3].value;
-    let data= `<tr><td>${name} </td><td>${dob} </td><td>${email} </td><td>${rno} </td></tr>`;
+    let data= `<tr><td>${rno} </td><td>${name} </td><td>${email} </td><td>${phno}</td></tr>`;
     //let obj = document.getElementById("demo");
     //obj.appendChild(data);
     $(data).appendTo("#demo");
@@ -186,18 +188,18 @@ function Sort(locationId,tableId,rowId){
     }
     if(rowId == "rno"){
         let i;
-        for( i=0; i< storedJSON.length; i++){
+        for(i=0; i< storedJSON.length; i++){
             let k;
-        for(k=i+1;k< storedJSON.length;k++){
-            if(storedJSON[i][3].value > storedJSON[k][3].value){
-                let j;
-                for( j=0; j<4; j++){
-                let temp = storedJSON[i][j].value;
-                storedJSON[i][j].value = storedJSON[k][j].value;
-                storedJSON[k][j].value = temp;
+        for(k=i+1; k<storedJSON.length; k++){
+                if(Number(storedJSON[i][3].value) > Number(storedJSON[k][3].value)){
+                    let j;
+                    for( j=0; j<4; j++){
+                    let temp = storedJSON[i][j].value;
+                    storedJSON[i][j].value = storedJSON[k][j].value;
+                    storedJSON[k][j].value = temp;
                 }
             }
-        }
+            }
         }
     }   
     location.reload();

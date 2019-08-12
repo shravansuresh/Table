@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Student Tab</title>
+<title>TableInfo</title>
 <link rel="stylesheet" type="text/css" href="css/studdata.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <style type="text/css">
     .bs-example{
         margin: 20px;
@@ -33,14 +33,12 @@
                 <a href="file:///home/shravan/photo_gallery/local.html#" class="nav-item nav-link">Home</a>
                 <a href="file:///home/shravan/photo_gallery/picgallery.html#" class="nav-item nav-link">Gallery</a>
                 <a href="file:///home/shravan/photo_gallery/studdata.html" class="nav-item nav-link active">Student Info</a>
+                <a href="file:///home/shravan/photo_gallery/empdata.html" class="nav-item nav-link">Employee Info</a>
             </div>
         </div>
     </nav>
 </div>
-<!--Zoom effect-->
-<div class="view zoom">
-        <img src="images/book.jpg" class="img-fluid " alt="smaple image">
-</div>
+
 <div class="container">
   <h2>Student Data</h2>
   <div class ="operations">
@@ -56,15 +54,16 @@
   <table class="table" id="StudTable">
     <thead>
       <tr>
-        <th onclick='Sort("studarry","StudTable","fname")'>Firstname</th>
-        <th onclick='Sort("studarry","StudTable","phno")'>Phone Number</th>
-        <th onclick='Sort("studarry","StudTable","email")'>Email</th>
         <th onclick='Sort("studarry","StudTable","rno")'>Roll no.</th>
+        <th onclick='Sort("studarry","StudTable","fname")'>Firstname</th>
+        <th onclick='Sort("studarry","StudTable","email")'>Email</th>
+        <th onclick='Sort("studarry","StudTable","phno")'>Phone Number</th>
       </tr>
     </thead>
     <tbody id="demo">
     </tbody>
   </table>
+  <div class="loadTable"><button type="button" class="btn-info" id="loadTable" onclick='ShowOnTable("studarry")'>Show Table Info</button></div>
 </div>
 <div id="AddForm">
     <form id="localStorageData" method="post" action="">
@@ -80,7 +79,7 @@
         <label>Roll No. :</label>
         <input type="number" name="rno" id="rno" class="stored" value="" />
           
-        <input type="Submit" onclick="savetolocal()"/>
+        <input type="Submit" onclick='savetolocal("studarry")'/>
     </form>
 </div>
 

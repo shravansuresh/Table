@@ -22,7 +22,6 @@ function savetolocal(locationId){
     }
 }
 function ShowOnTable(locationId){
-    document.getElementById("loadTable").style.display="none";
     document.getElementById("AddForm").style.display="none";
     let storedData = localStorage.getItem(locationId);
     let storedJSON = JSON.parse(storedData);
@@ -40,14 +39,20 @@ function ShowOnTable(locationId){
     $(data).appendTo("#demo");
 }
 }
-function DeleteRow(){
-    let deleteRno = prompt("Enter the Roll number in the row you want to delete: ", "Roll no. here");
+function DeleteRow(locationId){
+    let deleteRno;
+    if(locationId == 'studarry'){
+        deleteRno = prompt("Enter the Roll number in the row you want to delete: ", "Roll no. here");
+    }
+    else{
+        deleteRno = prompt("Enter the Employee Id in the row you want to delete: ", "Roll no. here");
+    }
     if(deleteRno != null)
     {
     const confirmDelete = confirm("Do you want delete ?");
     if(confirmDelete == true)
     {
-        let storedData = localStorage.getItem("studarry");
+        let storedData = localStorage.getItem(locationId);
         let storedJSON = JSON.parse(storedData);
         let i,flag=0;
         for(i=0; i<storedJSON.length; i++){
@@ -66,7 +71,7 @@ function DeleteRow(){
         }
         storedJSON.splice(i,1);
         let stringJSON=JSON.stringify(storedJSON);
-        localStorage.setItem("studarry",stringJSON);
+        localStorage.setItem(locationId,stringJSON);
         location.reload();
     }
     }
@@ -75,15 +80,20 @@ function showForm(){
     document.getElementById("AddForm").style.display="block";
     window.scrollTo(0, document.body.scrollHeight);
 }
-function EditRow(){
-    
-    let EditRno = prompt("Enter the Roll number of the row you want to edit: ", "Roll no. here");
+function EditRow(locationId){
+    let EditRno;
+    if(locationId == "studarry"){
+        EditRno = prompt("Enter the Roll number of the row you want to edit: ", "Roll no. here");
+    }
+    else{
+        EditRno = prompt("Enter the Employee Id of the row you want to edit: ", "Roll no. here"); 
+    }
     if(EditRno != null)
     {
     const confirmEdit = confirm("Do you want Edit ?");
     if(confirmEdit == true)
     {
-        let storedData = localStorage.getItem("studarry");
+        let storedData = localStorage.getItem(locationId);
         let storedJSON = JSON.parse(storedData);
         let i,flag=0;
         for(i=0; i<storedJSON.length; i++){
@@ -106,7 +116,7 @@ function EditRow(){
         document.getElementById("rno").placeholder = storedJSON[i][3].value;
         storedJSON.splice(i,1);
         let stringJSON=JSON.stringify(storedJSON);
-        localStorage.setItem("studarry",stringJSON);
+        localStorage.setItem(locationId,stringJSON);
     }
     }
     document.getElementById("AddForm").style.display="block";
@@ -114,25 +124,29 @@ function EditRow(){
     
 }
 
-function SearchAny()
+function SearchAny(locationId)
 {
     
-    let input, filter, table, td, tr, i, txtValue;
-    input = document.getElementById("SearchBar");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("StudTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td");
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
+    let input, filter,name1;
+    input = document.getElementById("SearchBar").value;
+    filter = input.toUpperCase();
+    let storedData = localStorage.getItem(locationId);
+    let storedJSON = JSON.parse(storedData);
+    let i, name, phno, email, rno;
+    let data="";
+    for(i=0; i<storedJSON.length ; i++)
+    {
+        name = storedJSON[i][0].value;
+        name1=name.toUpperCase();
+        if(name1.search(filter)>-1){
+            phno =  storedJSON[i][1].value;
+            email =  storedJSON[i][2].value;
+            rno =  storedJSON[i][3].value;
+            data= `${data}<tr><td>${rno} </td><td>${name} </td><td>${email} </td><td>${phno}</td></tr>`;
         }
-      }       
     }
+    document.getElementById("demo").innerHTML=data;
+    
 }
 
 function Sort(locationId,tableId,rowId){

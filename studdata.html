@@ -43,12 +43,12 @@
   <h2>Student Data</h2>
   <div class ="operations">
       <div class="active-purple-3 active-purple-4 mb-4">
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search" onkeyup="SearchAny()"  id="SearchBar">
+          <input class="form-control" type="text" placeholder="Search" aria-label="Search" onkeyup='SearchAny("studarry")'  id="SearchBar">
       </div>
     <div class="btn-group pull-right" id="EditDeleteBtn">
         <button type="button" class="btn btn-success " onclick="showForm()">Add a Row</button>
-        <button type="button" class="btn btn-danger " onclick="DeleteRow()">Delete a Row</button>
-        <button type="button" class="btn btn-warning " onclick="EditRow()">Edit a Row</button>
+        <button type="button" class="btn btn-danger " onclick='DeleteRow("studarry")'>Delete a Row</button>
+        <button type="button" class="btn btn-warning " onclick='EditRow("studarry")'>Edit a Row</button>
     </div> 
   </div>
   <table class="table" id="StudTable">
@@ -63,8 +63,6 @@
     <tbody id="demo">
     </tbody>
   </table>
-  <div class="loadTable"><button type="button" class="btn-info" id="loadTable" onclick='ShowOnTable("studarry")'>Show Table Info</button></div>
-</div>
 <div id="AddForm">
     <form id="localStorageData" method="post" action="">
         <label>Name :</label>
@@ -85,4 +83,7 @@
 
 
 <script type="text/javascript" src="studdata.js"></script>
+<script>
+    ShowOnTable("studarry");
+</script>
 </html>

@@ -39,24 +39,24 @@
     </nav>
 </div>
 <div class="container">
-    <h2>Student Data</h2>
+    <h2>Employee Data</h2>
     <div class ="operations">
         <div class="active-purple-3 active-purple-4 mb-4">
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search" onkeyup="SearchAny()"  id="SearchBar">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search" onkeyup='SearchAny("emparry")'  id="SearchBar">
         </div>
       <div class="btn-group pull-right" id="EditDeleteBtn">
           <button type="button" class="btn btn-success " onclick="showForm()">Add a Row</button>
-          <button type="button" class="btn btn-danger " onclick="DeleteRow()">Delete a Row</button>
-          <button type="button" class="btn btn-warning " onclick="EditRow()">Edit a Row</button>
+          <button type="button" class="btn btn-danger " onclick='DeleteRow("emparry")'>Delete a Row</button>
+          <button type="button" class="btn btn-warning " onclick='EditRow("emparry")'>Edit a Row</button>
       </div> 
     </div>
     <table class="table" id="StudTable">
       <thead>
         <tr>
-          <th onclick='Sort("emparry","StudTable","rno")'>Roll no.</th>
-          <th onclick='Sort("emparry","StudTable","fname")'>Firstname</th>
+          <th onclick='Sort("emparry","StudTable","rno")'>Employee Id</th>
+          <th onclick='Sort("emparry","StudTable","fname")'>Name</th>
           <th onclick='Sort("emparry","StudTable","email")'>Email</th>
-          <th onclick='Sort("emparry","StudTable","phno")'>Phone Number</th>
+          <th onclick='Sort("emparry","StudTable","phno")'>Project Manager</th>
         </tr>
       </thead>
       <tbody id="demo">
@@ -68,13 +68,13 @@
           <label>Name :</label>
           <input type="text" name="Fname" id="fname" class="stored" value="" />
               
-          <label>Phone Number :</label>
-          <input type="number" name="Phno" id="phno" class="stored" value="" />
+          <label>Project Manager :</label>
+          <input type="text" name="Phno" id="phno" class="stored" value="" />
               
           <label>Email :</label>
           <input type="email" name="Email" id="email" class="stored" value="" />
   
-          <label>Roll No. :</label>
+          <label>Employee Id :</label>
           <input type="number" name="rno" id="rno" class="stored" value="" />
             
           <input type="Submit" onclick='savetolocal("emparry")'/>
@@ -83,4 +83,7 @@
   
   
   <script type="text/javascript" src="studdata.js"></script>
+  <script>
+        ShowOnTable("emparry");
+    </script>
   </html>

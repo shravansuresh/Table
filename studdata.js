@@ -1,5 +1,4 @@
 /*Storing of data to local storage */
-//ShowOnTable(Id);
 function savetolocal(locationId){
     let Id = locationId;
     if(localStorage.getItem(locationId) === null){
@@ -8,7 +7,6 @@ function savetolocal(locationId){
     data.push(rowdata);
     let stringJSON = JSON.stringify(data);
     localStorage.setItem(locationId,stringJSON);
-    ShowOnTable(Id);
     }
 /*Adding data to table from local storage*/
     else{
@@ -18,8 +16,8 @@ function savetolocal(locationId){
     storedJSON.push(rowdatan);
     let stringJSON1 = JSON.stringify(storedJSON);
     localStorage.setItem(locationId,stringJSON1);
-    ShowOnTable(Id);
     }
+    ShowOnTable(Id);
 }
 function ShowOnTable(locationId){
     document.getElementById("AddForm").style.display="none";
@@ -80,6 +78,11 @@ function showForm(){
     document.getElementById("AddForm").style.display="block";
     window.scrollTo(0, document.body.scrollHeight);
 }
+
+function hideForm(){
+    document.getElementById("AddForm").style.display="none";
+    location.reload();
+}
 function EditRow(locationId){
     let EditRno;
     if(locationId == "studarry"){
@@ -118,9 +121,13 @@ function EditRow(locationId){
         let stringJSON=JSON.stringify(storedJSON);
         localStorage.setItem(locationId,stringJSON);
     }
-    }
     document.getElementById("AddForm").style.display="block";
     window.scrollTo(0, document.body.scrollHeight);
+    }
+    else{
+        ShowOnTable();
+    }
+    
     
 }
 

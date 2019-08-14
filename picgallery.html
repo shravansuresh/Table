@@ -83,7 +83,7 @@
     </div>
     
     <script type="text/javascript">
-      function myFunction(imgs) {
+      function ImgView(imgs) {
     var expandImg = document.getElementById("expandedImg");
     expandImg.src = imgs.src;
     expandImg.parentElement.style.display = "block";
@@ -100,7 +100,7 @@
         atag.setAttribute('href',"#");
         imgsrc =document.createElement("IMG");
         imgsrc.setAttribute('src',image.images[i]);
-        imgsrc.setAttribute('onclick',"myFunction(this);")
+        imgsrc.setAttribute('onclick',"ImgView(this);")
         atag.appendChild(imgsrc);
         k="col"+col;
         div =document.getElementById(k);

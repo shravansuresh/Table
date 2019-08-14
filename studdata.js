@@ -43,7 +43,7 @@ function DeleteRow(locationId){
         deleteRno = prompt("Enter the Roll number in the row you want to delete: ", "Roll no. here");
     }
     else{
-        deleteRno = prompt("Enter the Employee Id in the row you want to delete: ", "Roll no. here");
+        deleteRno = prompt("Enter the Employee Id in the row you want to delete: ", "Employee Id here");
     }
     if(deleteRno != null)
     {
@@ -89,7 +89,7 @@ function EditRow(locationId){
         EditRno = prompt("Enter the Roll number of the row you want to edit: ", "Roll no. here");
     }
     else{
-        EditRno = prompt("Enter the Employee Id of the row you want to edit: ", "Roll no. here"); 
+        EditRno = prompt("Enter the Employee Id of the row you want to edit: ", "Employee Id here"); 
     }
     if(EditRno != null)
     {

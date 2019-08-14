@@ -134,15 +134,31 @@ function SearchAny(locationId)
     let storedJSON = JSON.parse(storedData);
     let i, name, phno, email, rno;
     let data="";
-    for(i=0; i<storedJSON.length ; i++)
+    if(isNaN(filter))
     {
-        name = storedJSON[i][0].value;
-        name1=name.toUpperCase();
-        if(name1.search(filter)>-1){
-            phno =  storedJSON[i][1].value;
-            email =  storedJSON[i][2].value;
-            rno =  storedJSON[i][3].value;
-            data= `${data}<tr><td>${rno} </td><td>${name} </td><td>${email} </td><td>${phno}</td></tr>`;
+        for(i=0; i<storedJSON.length ; i++)
+        {
+            name = storedJSON[i][0].value;
+            name1=name.toUpperCase();
+            if(name1.search(filter)>-1){
+                phno =  storedJSON[i][1].value;
+                email =  storedJSON[i][2].value;
+                rno =  storedJSON[i][3].value;
+                data= `${data}<tr><td>${rno} </td><td>${name} </td><td>${email} </td><td>${phno}</td></tr>`;
+            }
+        }
+    }
+    else{
+        for(i=0; i<storedJSON.length ; i++)
+        {
+            rno = storedJSON[i][3].value;
+            rno1=rno.toUpperCase();
+            if(rno1.search(filter)>-1){
+                phno =  storedJSON[i][1].value;
+                email =  storedJSON[i][2].value;
+                name =  storedJSON[i][0].value;
+                data= `${data}<tr><td>${rno} </td><td>${name} </td><td>${email} </td><td>${phno}</td></tr>`;
+            }
         }
     }
     document.getElementById("demo").innerHTML=data;

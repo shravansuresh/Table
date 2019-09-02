@@ -40,7 +40,7 @@
 <body>
     <div class="bs-example">
         <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-            <a href="#" class="navbar-brand">Logo</a>
+            <a href="#" class="navbar-brand"><img class="logo" src="images/insta.png"></a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse1">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -50,6 +50,7 @@
                     <a href="file:///home/shravan/photo_gallery/local.html#" class="nav-item nav-link">Home</a>
                     <a href="file:///home/shravan/photo_gallery/picgallery.html#" class="nav-item nav-link active">Gallery</a>
                     <a href="file:///home/shravan/photo_gallery/studdata.html" class="nav-item nav-link">Student Info</a>
+                    <a href="file:///home/shravan/photo_gallery/empdata.html" class="nav-item nav-link">Employee Info</a>
                 </div>
             </div>
         </nav>
@@ -82,7 +83,7 @@
     </div>
     
     <script type="text/javascript">
-      function myFunction(imgs) {
+      function ImgView(imgs) {
     var expandImg = document.getElementById("expandedImg");
     expandImg.src = imgs.src;
     expandImg.parentElement.style.display = "block";
@@ -99,7 +100,7 @@
         atag.setAttribute('href',"#");
         imgsrc =document.createElement("IMG");
         imgsrc.setAttribute('src',image.images[i]);
-        imgsrc.setAttribute('onclick',"myFunction(this);")
+        imgsrc.setAttribute('onclick',"ImgView(this);")
         atag.appendChild(imgsrc);
         k="col"+col;
         div =document.getElementById(k);

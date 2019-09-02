@@ -6,8 +6,28 @@
 	margin: 0;
 	font-family: "sans-serif";
   }
-  .book-img{
+  .zoom{
       text-align: center;
       width: 100%;
       height: auto;
+  }
+  .operations{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .container{
+    position: relative;
+  }
+  .btn-group{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .logo{
+    height: 40px;
+    width:auto;
+  }
+  .loadTable{
+    display: flex;
+    justify-content: center;
   }

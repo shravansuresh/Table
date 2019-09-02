@@ -1,4 +1,3 @@
-/*Storing of data to local storage */
 function savetolocal(locationId){
     let Id = locationId;
     if(localStorage.getItem(locationId) === null){
@@ -8,7 +7,6 @@ function savetolocal(locationId){
     let stringJSON = JSON.stringify(data);
     localStorage.setItem(locationId,stringJSON);
     }
-/*Adding data to table from local storage*/
     else{
     let storedData = localStorage.getItem(locationId);
     let storedJSON = JSON.parse(storedData);
@@ -32,8 +30,6 @@ function ShowOnTable(locationId){
     email =  storedJSON[i][2].value;
     rno =  storedJSON[i][3].value;
     let data= `<tr><td>${rno} </td><td>${name} </td><td>${email} </td><td>${phno}</td></tr>`;
-    //let obj = document.getElementById("demo");
-    //obj.appendChild(data);
     $(data).appendTo("#demo");
 }
 }
@@ -239,7 +235,7 @@ function Sort(locationId,tableId,rowId){
             }
         }
     }   
-    location.reload();
     let stringJSON=JSON.stringify(storedJSON);
     localStorage.setItem(locationId,stringJSON);
+    location.reload();
 }

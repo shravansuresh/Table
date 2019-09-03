@@ -1,19 +1,29 @@
 function savetolocal(locationId){
     let Id = locationId;
     if(localStorage.getItem(locationId) === null){
-    let data=[];
-    let rowdata = ( $( document.getElementById("localStorageData") ).serializeArray());
-    data.push(rowdata);
-    let stringJSON = JSON.stringify(data);
-    localStorage.setItem(locationId,stringJSON);
+        let data=[];
+        let rowdata = ( $( document.getElementById("localStorageData") ).serializeArray());
+        if(!rowdata[0].value || !rowdata[1].value || !rowdata[2].value || !rowdata[3].value){
+            alert("add data");
+        }
+        else{
+            data.push(rowdata);
+            let stringJSON = JSON.stringify(data);
+            localStorage.setItem(locationId,stringJSON);
+        }
     }
     else{
-    let storedData = localStorage.getItem(locationId);
-    let storedJSON = JSON.parse(storedData);
-    let rowdatan = ( $( document.getElementById("localStorageData") ).serializeArray());
-    storedJSON.push(rowdatan);
-    let stringJSON1 = JSON.stringify(storedJSON);
-    localStorage.setItem(locationId,stringJSON1);
+        let storedData = localStorage.getItem(locationId);
+        let storedJSON = JSON.parse(storedData);
+        let rowdatan = ( $( document.getElementById("localStorageData") ).serializeArray());
+        if(!rowdatan[0].value || !rowdatan[1].value || !rowdatan[2].value || !rowdatan[3].value){
+            alert("add data");
+        }
+        else{
+            storedJSON.push(rowdatan);
+            let stringJSON1 = JSON.stringify(storedJSON);
+            localStorage.setItem(locationId,stringJSON1);
+        }
     }
     ShowOnTable(Id);
 }
